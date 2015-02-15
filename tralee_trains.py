@@ -23,11 +23,13 @@ for train in doc.iter():
 print train_dict
             
 map_string = "https://maps.googleapis.com/maps/api/staticmap?center=Athlone&zoom=7&size=700x600&maptype=roadmap"
-color = 'blue'
+color = ''
 for i in train_dict:
     #if train is traveling towards Tralee change color to green, else blue will be used.
     if 'Tralee' in str(train_dict[i]['Direction']).split():
         color = 'green'
+    else:
+        color = 'blue'
     map_string += "&markers=color:" + color + "%7Clabel:" + str(i) + "%7C" + str(train_dict[i]['Latitude']) + ",%20" + (train_dict[i]['Longitude'])
 
 webbrowser.open(map_string)
